@@ -1,6 +1,6 @@
 #views
 
-from models import init_field, has_emty_cell, empty_symvol
+from models import init_field, has_emty_cell, empty_symvol, size_filed
 
 first_player = "X"
 second_player = "O"
@@ -9,7 +9,7 @@ def main():
     field = init_field()
     print_field(field)
 
-    current_player, next_player =first_player, second_player
+    current_player, next_player = first_player, second_player
     while True:
         player_step(current_player)
         print_field()
@@ -20,21 +20,40 @@ def main():
             print_draw_msg()
 
         enemy_step(next_player)
-            print_win_msg(next_player)
-            print_field()
+        print_win_msg(next_player)
+        print_field()
         if is_win(field):# check is win
             print_win_msg(current_player)
             break
         if not has_emty_cell(field):
             print_draw_msg()
+            break
         # change player
 
 # ход игрока
 def player_step(player_symvol: str):
+    while True:
     try:
-        str_coord = input('введите ячейку для хода от 1 до 9: ')
+        coord = int(input('введите ячейку для хода от 1 до 9: '))
     except ValueError
         print("вы ввели не целое число")
+    if 1 <=coord<= 9:
+        print("введите число от 1 до 9")
+        continue
+    if not 1 <=coord<= 9:
+        print("введите число от 1 до 9")
+        continue
+
+    x = (coord - 1) // size_filed
+    y = (coord - 1) % size_filed
+    if not is_empty_cell(field, row_index =x, col_index = y):
+    print("ячейка занята")
+    set_cell(field,
+             row_index = x,
+             col_index = y,
+             player_symvol = player_symvol)
+    break
+
 
 # ход противника
 def enemy_step(player_symvol: str):# может быть либо человек либо бот
@@ -50,9 +69,11 @@ def print_field(field: list[list]) -> None:
         print()
     print("-"*20)
 
-def print_win_msg(player_symvol: )
+def print_win_msg(player_symvol: str ) -> None
+    print(f"выиграл игрок{player_symvol}")
 
 def print_draw_msg():
+    print("ничья")
 
 if __name__ == "__main__":
     main()

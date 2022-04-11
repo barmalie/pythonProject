@@ -10,8 +10,8 @@ print(init_field()) #тестирование
 
 #проверяем поле на заполненость
 def is_empty_cell(field: list[list],
-                row_index: int,
-                col_index: int) -> bool:
+                    row_index: int,
+                    col_index: int) -> bool:
     return field[row_index][col_index] == empty_symvol
 
 
@@ -64,9 +64,13 @@ def set_cell(field: list[list],
              player_symvol) -> None:
      field[row_index][col_index] == player_symvol
     #return field[row_index][col_index] == player_symvol
+def test_empty_field():
+     empty_field = init_field()
+     assert is_win(empty_field) == False
 
-test_field = init_field()
-print(test_field)
+ if _name__ == "__main__":
+    test_field = init_field()
+    print(test_field)
 
 
-assert is_win(test_field) == False
+    assert is_win(test_field) == False
