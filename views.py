@@ -1,9 +1,8 @@
 #views
 
 from models import init_field, has_emty_cell, empty_symvol, size_filed
+from conf import first_player, second_player
 
-first_player = "X"
-second_player = "O"
 
 def main():
     field = init_field()

@@ -1,5 +1,5 @@
-empty_symvol ='_'
-size_filed = 3
+
+from  conf import empty_symvol, size_filed
 #созаем поле
 def init_field(size:int = size_filed) -> list[list]:
     return [
